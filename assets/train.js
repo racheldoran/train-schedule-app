@@ -60,29 +60,29 @@ var firebaseConfig = {
     $("#frequency-input").val("");
   });
   
-  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+  // 3. Create Firebase event for adding train to the database and a row in the html when a user adds an entry
   database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
   
     // Store everything into a variable.
-    var empName = childSnapshot.val().name;
-    var empRole = childSnapshot.val().role;
-    var empStart = childSnapshot.val().start;
-    var empRate = childSnapshot.val().rate;
+    var trainName = childSnapshot.val().name;
+    var trainDest = childSnapshot.val().destination;
+    var trainTime = childSnapshot.val().time;
+    var trainFreq = childSnapshot.val().frequency;
   
     // Employee Info
-    console.log(empName);
-    console.log(empRole);
-    console.log(empStart);
-    console.log(empRate);
+    console.log(trainName);
+    console.log(trainDest);
+    console.log(trainTime);
+    console.log(trainFreq);
   
     // Prettify the employee start
-    var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+    var trainStartPlease = moment.unix(trainTime).format("MM/DD/YYYY");
   
     // Calculate the months worked using hardcore math
     // To calculate the months worked
-    var empMonths = moment().diff(moment(empStart, "X"), "months");
-    console.log(empMonths);
+    var trainMinutes = moment().diff(moment(trainTime, "X"), "months");
+    console.log(trainMinutes);
   
     // Calculate the total billed rate
     var empBilled = empMonths * empRate;
@@ -90,16 +90,16 @@ var firebaseConfig = {
   
     // Create the new row
     var newRow = $("<tr>").append(
-      $("<td>").text(empName),
-      $("<td>").text(empRole),
-      $("<td>").text(empStartPretty),
-      $("<td>").text(empMonths),
+      $("<td>").text(trainName),
+      $("<td>").text(trainDest),
+      $("<td>").text(trainStartPlease),
+      $("<td>").text(trainMinutes),
       $("<td>").text(empRate),
       $("<td>").text(empBilled)
     );
   
     // Append the new row to the table
-    $("#employee-table > tbody").append(newRow);
+    $("#train-table > tbody").append(newRow);
   });
   
   // Example Time Math
