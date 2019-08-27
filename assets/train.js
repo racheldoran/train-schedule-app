@@ -1,6 +1,6 @@
 $(document).ready(function () {
     console.log("WAZZAP!!");
-
+});
     // 1. Initialize Firebase
     var firebaseConfig = {
         apiKey: "AIzaSyBxVc5Lcw22qDj3HLH6y_hWX7efbKUVums",
@@ -23,7 +23,7 @@ $(document).ready(function () {
         // Grabs user input
         var trainName = $("#train-name-input").val().trim();
         var trainDest = $("#destination-input").val().trim();
-        var trainTime = moment($("#time-input").val().trim(), "MM/DD/YYYY").format("X");
+        var trainTime = moment($("#time-input").val().trim(), "hh:mm A").format("X");
         var trainFreq = $("#frequency-input").val().trim();
 
         // Creates local "temporary" object for holding train data
@@ -68,44 +68,52 @@ $(document).ready(function () {
         console.log(trainTime);
         console.log(trainFreq);
 
-
-        var trainTimeLeft = 0;
-        var frequent = 0;
-        var arrivalTime = "";
-      
-        var trainStart = moment.unix(trainTime).format("hh:mm A");
         
-        var trainMinutes = moment().diff(moment(trainTime, "X"), "minutes");
-        console.log(trainMinutes);
+        var tFrequency = 3;
+       
 
-        trainRemains = trainTimeLeft % frequent;
+    // Time is 3:30 AM
+    var firstTime = "03:30";
 
-    // subtract the remainder from the frequency, store in var
-        arrivalTime = frequent - trainRemains;
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
 
-        // Create the new row
-        var newRow = $("<tr>").append(
-            $("<td>").text(trainName),
-            $("<td>").text(trainDest),
-            $("<td>").text(trainStart),
-            $("<td>").text(trainMinutes),
-            $("<td>").text(trainRemains),
-            $("<td>").text(arrivalTime)
-        );
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-        // Append the new row to the table
-        $("#train-table > tbody").append(newRow);
-    });
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
 
-    // Example Time Math
-    // -----------------------------------------------------------------------------
-    // Assume Employee start date of January 1, 2015
-    // Assume current date is March 1, 2016
+    // Time apart (remainder)
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
 
-    // We know that this is 15 months.
-    // Now we will create code in moment.js to confirm that any attempt we use meets this test case
+    // Minute Until Train
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-});
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    
+}); 
+  
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(diffTime),
+        $("<td>").text(tRemainder),
+        $("<td>").text(tMinutesTillTrain),
+        $("<td>").text(nextTrain),
+   
+    );
+
+    // Append the new row to the table
+    $("#train-table > tbody").append(newRow);
+
+
 
 
 
