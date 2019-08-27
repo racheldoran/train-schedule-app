@@ -68,16 +68,20 @@ $(document).ready(function () {
         console.log(trainTime);
         console.log(trainFreq);
 
+
+        var trainTimeLeft = 0;
+        var frequent = 0;
+        var arrivalTime = "";
       
         var trainStart = moment.unix(trainTime).format("hh:mm A");
-
         
         var trainMinutes = moment().diff(moment(trainTime, "X"), "minutes");
         console.log(trainMinutes);
 
-        
-        var empBilled = empMonths * empRate;
-        console.log(empBilled);
+        trainRemains = trainTimeLeft % frequent;
+
+    // subtract the remainder from the frequency, store in var
+        arrivalTime = frequent - trainRemains;
 
         // Create the new row
         var newRow = $("<tr>").append(
@@ -85,8 +89,8 @@ $(document).ready(function () {
             $("<td>").text(trainDest),
             $("<td>").text(trainStart),
             $("<td>").text(trainMinutes),
-            $("<td>").text(empRate),
-            $("<td>").text(empBilled)
+            $("<td>").text(trainRemains),
+            $("<td>").text(arrivalTime)
         );
 
         // Append the new row to the table
