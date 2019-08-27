@@ -26,7 +26,7 @@ $(document).ready(function () {
         var trainTime = moment($("#time-input").val().trim(), "MM/DD/YYYY").format("X");
         var trainFreq = $("#frequency-input").val().trim();
 
-        // Creates local "temporary" object for holding traindata
+        // Creates local "temporary" object for holding train data
         var newTrain = {
             name: trainName,
             destination: trainDest,
@@ -69,14 +69,13 @@ $(document).ready(function () {
         console.log(trainFreq);
 
       
-        var trainStartPlease = moment.unix(trainTime).format("hh:mm A");
+        var trainStart = moment.unix(trainTime).format("hh:mm A");
 
-        // Calculate the months worked using hardcore math
-        // To calculate the months worked
+        
         var trainMinutes = moment().diff(moment(trainTime, "X"), "minutes");
         console.log(trainMinutes);
 
-        // Calculate the total billed rate
+        
         var empBilled = empMonths * empRate;
         console.log(empBilled);
 
@@ -84,7 +83,7 @@ $(document).ready(function () {
         var newRow = $("<tr>").append(
             $("<td>").text(trainName),
             $("<td>").text(trainDest),
-            $("<td>").text(trainStartPlease),
+            $("<td>").text(trainStart),
             $("<td>").text(trainMinutes),
             $("<td>").text(empRate),
             $("<td>").text(empBilled)
