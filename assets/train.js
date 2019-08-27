@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    console.log("WAZZAP!!");
-});
+    console.log("it's bitney bitch");
+
 // 1. Initialize Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyBxVc5Lcw22qDj3HLH6y_hWX7efbKUVums",
@@ -69,8 +69,7 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(trainFreq);
 
 
-    var tFrequency = 3;
-
+    var tFrequency = 2;
 
     // Time //
     var firstTime = "4:15pm";
@@ -113,6 +112,10 @@ var newRow = $("<tr>").append(
 // Append the new row to the table
 $("#train-table > tbody").append(newRow);
 
+   // Handle the errors
+}, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
 
 
 
