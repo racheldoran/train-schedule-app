@@ -10,10 +10,10 @@ $(document).ready(function () {
         storageBucket: "",
         messagingSenderId: "416300720933",
         appId: "1:416300720933:web:f70271a6caaf7830"
+    
     };
 
     firebase.initializeApp(firebaseConfig);
-   
     var database = firebase.database();
 
     // 2. Button for adding Trains
