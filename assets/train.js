@@ -21,47 +21,45 @@ $(document).ready(function () {
 
     // Initial Values
     var train = "";
-    var destination = "";
+    var destination = 0;
     var time = 0;
     var frequency = "";
 
-    // Capture Button Click
+   
     $("#add-train-btn").on("click", function(event) {
       event.preventDefault();
 
-      // Grabbed values from text boxes
+      // Grabbed values from text-boxes
       train = $("#train-name-input").val().trim();
       destination = $("#destination-input").val().trim();
       time = $("#time-input").val().trim();
-      requency = $("#frequency-input").val().trim();
+      frequency = $("#frequency-input").val().trim();
 
-      // Code for handling the push
-      database.ref().push({
+      // Code for "Setting values in the database"
+      database.ref().set({
         train: train,
         destination: destination,
         time: time,
-        frequency: frequency,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        frequency : frequency
       });
 
     });
 
-    // Firebase watcher .on("child_added"
-    database.ref().on("child_added", function(snapshot) {
-      // storing the snapshot.val() in a variable for convenience
-      var sv = snapshot.val();
+    // Firebase watcher + initial loader HINT: .on("value")
+    database.ref().on("value", function(snapshot) {
 
-      // Console.loging the last user's data
-      console.log(sv.train);
-      console.log(sv.destination);
-      console.log(sv.time);
-      console.log(sv.frequency);
+      // Log everything that's coming out of snapshot
+      console.log(snapshot.val());
+      console.log(snapshot.val().train);
+      console.log(snapshot.val().destination);
+      console.log(snapshot.val().time);
+      console.log(snapshot.val().frequency);
 
       // Change the HTML to reflect
-      $("#name-display").text(sv.train);
-      $("#email-display").text(sv.destination);
-      $("#age-display").text(sv.time);
-      $("#comment-display").text(sv.frequency);
+      $("#name-display").text(snapshot.val().train);
+      $("#email-display").text(snapshot.val().destination);
+      $("#age-display").text(snapshot.val().time);
+      $("#comment-display").text(snapshot.val().frequency);
 
       // Handle the errors
     }, function(errorObject) {
