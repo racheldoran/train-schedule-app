@@ -28,7 +28,7 @@ $(document).ready(function () {
    
     $("#add-train-btn").on("click", function(event) {
       event.preventDefault();
-
+       
       // Grabbed values from text-boxes
       train = $("#train-name-input").val().trim();
       destination = $("#destination-input").val().trim();
@@ -60,7 +60,7 @@ $(document).ready(function () {
       $("#destination-display").text(snapshot.val().destination);
       $("#time-display").text(snapshot.val().time);
       $("#frequency-display").text(snapshot.val().frequency);
-
+       
       // Handle the errors
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
