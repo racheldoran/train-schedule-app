@@ -56,10 +56,10 @@ $(document).ready(function () {
       console.log(snapshot.val().frequency);
 
       // Change the HTML to reflect
-      $("#train-name-input").text(snapshot.val().train);
-      $("#destination-input").text(snapshot.val().destination);
-      $("#time-input").text(snapshot.val().time);
-      $("#frequency-input").text(snapshot.val().frequency);
+      $("#train-display").text(snapshot.val().train);
+      $("#destination-display").text(snapshot.val().destination);
+      $("#time-display").text(snapshot.val().time);
+      $("#frequency-display").text(snapshot.val().frequency);
 
       // Handle the errors
     }, function(errorObject) {
