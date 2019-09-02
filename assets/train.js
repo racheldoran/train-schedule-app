@@ -56,10 +56,11 @@ $(document).ready(function () {
     console.log(snapshot.val().frequency);
 
     // Change the HTML to reflect
-    $("#train-display").text(snapshot.val().train);
-    $("#destination-display").text(snapshot.val().destination);
-    $("#next-display").text(snapshot.val().time);
-    $("#frequency-display").text(snapshot.val().frequency);
+    $("#train-display").text(snapshot.val().train).append();
+    $("#destination-display").text(snapshot.val().destination).append();
+    $("#next-display").text(snapshot.val().time).append();
+    $("#frequency-display").text(snapshot.val().frequency).append();
+
 
     // Handle the errors
   }, function (errorObject) {
