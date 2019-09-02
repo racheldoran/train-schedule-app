@@ -42,9 +42,8 @@
             <div class="col-md-12">
 
                 <!-- Current Trains-->
-                <div class="card mb-4">
-                    <div class="card-header" style="background-color: rgb(119, 119, 212); color: white">Current Train
-                        Schedule</div>
+                <div id="schedule" class="card">
+                    <div class="card-header">Current Train Schedule</div>
                     <div class="card-body">
                         <table class="table table-sm table-hover" id='train-table'>
                             <thead>
@@ -57,17 +56,15 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr class="k">
+                                    <td id="train-display"></td>
+                                    <td id="destination-display"></td>
+                                    <td id="frequency-display"></td>
+                                    <td id="next-display"></td>
+                                    <td id="time-display"></td>
+                                </tr>
                             </tbody>
-                            <div class="train crap">
-                                <p id="train-display"></p>
-                                <p id="destination-display"></p>
-                                <p id="time-display"></p>
-                                <p id="frequency-display"></p>
-                        </div>
                         </table>
-                    </div>
-                </div>
-
               
 
         <div class="row">
@@ -99,6 +96,9 @@
                             </div>
                             <button class="btn btn-primary float-right" id="add-train-btn">Submit</button>
                         </form>
+
+                        
+
 
                         
                     </div>
