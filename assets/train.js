@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  console.log("WAZZAAAAAPPP");
+  console.log("it's Britney Bitch");
 
   // 1. Initialize Firebase
   var firebaseConfig = {
