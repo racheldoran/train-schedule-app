@@ -66,4 +66,31 @@ $(document).ready(function () {
       console.log("Errors handled: " + errorObject.code);
     });
 
+
+
+    var freq = 4;
+
+    var firstTime = "05:30";
+
+    var convert = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(convert);
+
+    var now = moment();
+    console.log("CURRENT TIME: " + moment(now).format("hh:mm"));
+    
+    var later = moment().diff(moment(convert), "minutes");
+    console.log("Difference In Time: " + later);
+    
+    var tRemainder = now % freq;
+    console.log(tRemainder);
+    
+    var minTill = freq- tRemainder;
+    console.log("MINUTES TILL TRAIN: " + minTill);
+    
+    var nextTrain = moment().add(minTill, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("ddd, hA"));
+    $("#time-display").append(minTill);
+    $("#next-display").text(nextTrain.format("ddd, hA"));
 })
+
+
