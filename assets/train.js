@@ -58,7 +58,7 @@ $(document).ready(function () {
       // Change the HTML to reflect
       $("#train-display").text(snapshot.val().train);
       $("#destination-display").text(snapshot.val().destination);
-      $("#time-display").text(snapshot.val().time);
+      $("#next-display").text(snapshot.val().time);
       $("#frequency-display").text(snapshot.val().frequency);
        
       // Handle the errors
