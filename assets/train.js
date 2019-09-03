@@ -62,10 +62,10 @@ $(document).ready(function () {
     " </span></div>");
 
     // Change the HTML to reflect
-    $("#train-display").text(snapshot.val().train);
-    $("#destination-display").text(snapshot.val().destination);
-    $("#next-display").text(snapshot.val().time);
-    $("#frequency-display").text(snapshot.val().frequency);
+    $("#train-display").text(snapshot.val().train).append();
+    $("#destination-display").text(snapshot.val().destination).append();
+    $("#next-display").text(snapshot.val().minTill).append();
+    $("#frequency-display").text(snapshot.val().nextTrain).append();
 
   
 
