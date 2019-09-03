@@ -14,7 +14,7 @@ $(document).ready(function () {
   };
 
   firebase.initializeApp(firebaseConfig);
- 
+
   var database = firebase.database();
 
   // Initial Values
@@ -55,26 +55,23 @@ $(document).ready(function () {
 
 
     $("#train-crap").append("<div class='well'><span class='train-name'> " +
-    snapshot.val().train +
-    " </span><span class='train-dest'> " + snapshot.val().destination +
-    " </span><span class='train-time'> " + snapshot.val().minTill +
-    " </span><span class='train-freq'> " + snapshot.val().nextTrain +
-    " </span></div>");
+      snapshot.val().train +
+      " </span><span class='train-dest'> " + snapshot.val().destination +
+      " </span><span class='train-time'> " + snapshot.val().minTill +
+      " </span><span class='train-freq'> " + snapshot.val().nextTrain +
+      " </span></div>");
 
     // Change the HTML to reflect
-    $("#train-display").text(snapshot.val().train).append();
-    $("#destination-display").text(snapshot.val().destination).append();
-    $("#next-display").text(snapshot.val().minTill).append();
-    $("#frequency-display").text(snapshot.val().nextTrain).append();
-
-  
+    $("#train-display").text(snapshot.val().train);
+    $("#destination-display").text(snapshot.val().destination);
+    $("#next-display").text(snapshot.val().minTill);
+    $("#frequency-display").text(snapshot.val().nextTrain);
 
 
     // Handle the errors
   }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
   });
-
 
 
   var freq = 4;
