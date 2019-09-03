@@ -57,8 +57,8 @@ $(document).ready(function () {
     $("#train-crap").append("<div class='well'><span class='train-name'> " +
     snapshot.val().train +
     " </span><span class='train-dest'> " + snapshot.val().destination +
-    " </span><span class='train-time'> " + snapshot.val().time +
-    " </span><span class='train-freq'> " + snapshot.val().frequency +
+    " </span><span class='train-time'> " + snapshot.val().minTill +
+    " </span><span class='train-freq'> " + snapshot.val().nextTrain +
     " </span></div>");
 
     // Change the HTML to reflect
