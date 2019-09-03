@@ -53,11 +53,21 @@ $(document).ready(function () {
     console.log(snapshot.val().time);
     console.log(snapshot.val().frequency);
 
+
+    $("#train-crap").append("<div class='well'><span class='train-name'> " +
+    snapshot.val().train +
+    " </span><span class='train-dest'> " + snapshot.val().destination +
+    " </span><span class='train-time'> " + snapshot.val().time +
+    " </span><span class='train-freq'> " + snapshot.val().frequency +
+    " </span></div>");
+
     // Change the HTML to reflect
     $("#train-display").text(snapshot.val().train);
     $("#destination-display").text(snapshot.val().destination);
     $("#next-display").text(snapshot.val().time);
     $("#frequency-display").text(snapshot.val().frequency);
+
+  
 
 
     // Handle the errors
