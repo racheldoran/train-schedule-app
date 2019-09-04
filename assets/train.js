@@ -54,18 +54,19 @@ $(document).ready(function () {
     console.log(snapshot.val().frequency);
 
 
-    $("#train-crap").append("<div class='well'><span class='train-name'> " +
+    $("#train-crap").append("<div class='well'><span class='train-display'> " +
       snapshot.val().train +
-      " </span><span class='train-dest'> " + snapshot.val().destination +
-      " </span><span class='train-time'> " + snapshot.val().minTill +
-      " </span><span class='train-freq'> " + snapshot.val().nextTrain +
+      " </span><span class='destination-display'> " + snapshot.val().destination +
+      " </span><span class='frequency-display'> " + snapshot.val().frequency +
+      " </span><span class='train-time'> " + snapshot.val().time +
       " </span></div>");
 
     // Change the HTML to reflect
     $("#train-display").text(snapshot.val().train);
     $("#destination-display").text(snapshot.val().destination);
-    $("#next-display").text(snapshot.val().minTill);
-    $("#frequency-display").text(snapshot.val().nextTrain);
+    $("#time-display").text(snapshot.val().time);
+    $("#frequency-display").text(snapshot.val().frequency);
+ 
 
 
     // Handle the errors
@@ -95,8 +96,8 @@ $(document).ready(function () {
 
   var nextTrain = moment().add(minTill, "minutes");
   console.log("ARRIVAL TIME: " + moment(nextTrain).format("ddd, hA"));
-  $("#time-display").append(minTill);
-  $("#next-display").text(nextTrain.format("ddd, hA"));
+  $("#minutes-display").append(minTill);
+  $("#time-display").text(nextTrain.format("ddd, hA"));
 })
 
 
