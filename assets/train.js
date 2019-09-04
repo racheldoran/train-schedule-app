@@ -54,17 +54,17 @@ $(document).ready(function () {
     console.log(snapshot.val().frequency);
 
 
-    $("#train-crap").append("<div class='well'><span class='train-display'> " +
+    $(".train-crap").append("<div class='row'><span class='train-name-input> " +
       snapshot.val().train +
-      " </span><span class='destination-display'> " + snapshot.val().destination +
-      " </span><span class='frequency-display'> " + snapshot.val().frequency +
-      " </span><span class='train-time'> " + snapshot.val().time +
+      " </span><span class='destination-input'> " + snapshot.val().destination +
+      " </span><span class='frequency-input'> " + snapshot.val().frequency +
+      " </span><span class='time-input'> " + snapshot.val().time +
       " </span></div>");
 
     // Change the HTML to reflect
     $("#train-display").text(snapshot.val().train);
     $("#destination-display").text(snapshot.val().destination);
-    $("#time-display").text(snapshot.val().time);
+    $("#time-display").text(snapshot.val().minTill);
     $("#frequency-display").text(snapshot.val().frequency);
  
 
@@ -77,9 +77,9 @@ $(document).ready(function () {
 
   var freq = 4;
 
-  var firstTime = "05:30";
+  var firstTime = "5:30";
 
-  var convert = moment(firstTime, "HH:mm").subtract(1, "years");
+  var convert = moment(firstTime, "HH:mm").subtract(1, "minutes");
   console.log(convert);
 
   var now = moment();
@@ -95,9 +95,12 @@ $(document).ready(function () {
   console.log("MINUTES TILL TRAIN: " + minTill);
 
   var nextTrain = moment().add(minTill, "minutes");
-  console.log("ARRIVAL TIME: " + moment(nextTrain).format("ddd, hA"));
-  $("#minutes-display").append(minTill);
-  $("#time-display").text(nextTrain.format("ddd, hA"));
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+  $("#minutes-display").text(minTill);
+  $("#time-display").text(nextTrain.format("hh:mm"));
+
+
+
 })
 
 
