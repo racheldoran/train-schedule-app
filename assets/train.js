@@ -57,10 +57,10 @@ $(document).ready(function () {
    
 
     // you will need to calculate this
-    var nextArrival = "X";
+    var nextArrival = "5:00pm";
     
     // you will need to calculate this
-    var minsAway = "Y";
+    var minsAway = 4;
 
     $(".train-crap").append(
 `
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
   var freq = 4;
 
-  var firstTime = "5:30";
+  var firstTime = " ";
 
   var convert = moment(firstTime, "HH:mm").subtract(1, "minutes");
   console.log(convert);
@@ -96,13 +96,13 @@ $(document).ready(function () {
   var tRemainder = now % freq;
   console.log(tRemainder);
 
-  var minTill = freq - tRemainder;
-  console.log("MINUTES TILL TRAIN: " + minTill);
+  var minsAway = freq - tRemainder;
+  console.log("MINUTES TILL TRAIN: " + minsAway);
 
-  var nextTrain = moment().add(minTill, "minutes");
-  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-  $("#minutes-display").text(minTill);
-  $("#time-display").text(nextTrain.format("hh:mm"));
+  var nextArrival = moment().add(minsAway, "minutes");
+  console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
+  $("#minutes-display").text(minsAway);
+  $("#time-display").text(nextArrival.format("hh:mm"));
 
 
 
