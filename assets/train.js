@@ -54,6 +54,9 @@ $(document).ready(function () {
     console.log(snapshot.val().frequency);
 
 
+   
+
+    // you will need to calculate this
     var nextArrival = "X";
     
     // you will need to calculate this
@@ -68,8 +71,8 @@ $(document).ready(function () {
     <td id="time-display">${nextArrival}</td>
     <td id="minutes-display">${minsAway}</td>
   </tr>
- 
-
+`
+    );
 
     // Handle the errors
   }, function (errorObject) {
