@@ -54,18 +54,20 @@ $(document).ready(function () {
     console.log(snapshot.val().frequency);
 
 
-    $(".train-crap").append("<div class='row'><span class='train-name-input> " +
-      snapshot.val().train +
-      " </span><span class='destination-input'> " + snapshot.val().destination +
-      " </span><span class='frequency-input'> " + snapshot.val().frequency +
-      " </span><span class='time-input'> " + snapshot.val().time +
-      " </span></div>");
+    var nextArrival = "X";
+    
+    // you will need to calculate this
+    var minsAway = "Y";
 
-    // Change the HTML to reflect
-    $("#train-display").text(snapshot.val().train);
-    $("#destination-display").text(snapshot.val().destination);
-    $("#time-display").text(snapshot.val().minTill);
-    $("#frequency-display").text(snapshot.val().frequency);
+    $(".train-crap").append(
+`
+  <tr>
+    <td id="train-display">${snapshot.val().train}</td>
+    <td id="destination-display">${snapshot.val().destination}</td>
+    <td id="frequency-display">${snapshot.val().frequency}</td>
+    <td id="time-display">${nextArrival}</td>
+    <td id="minutes-display">${minsAway}</td>
+  </tr>
  
 
 
