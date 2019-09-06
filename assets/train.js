@@ -79,28 +79,33 @@ $(document).ready(function () {
     console.log("Errors handled: " + errorObject.code);
   });
 
+  var tFrequency = 3;
 
-  var freq = 4;
+    // Time is 3:30 AM
+    var firstTime = "03:30";
 
-  var firstTime = " ";
+  var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
 
-  var convert = moment(firstTime, "HH:mm").subtract(1, "minutes");
-  console.log(convert);
+  // Current Time
+  var currentTime = moment();
+  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-  var now = moment();
-  console.log("CURRENT TIME: " + moment(now).format("hh:mm"));
+  // Difference between the times
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("DIFFERENCE IN TIME: " + diffTime);
 
-  var later = moment().diff(moment(convert), "minutes");
-  console.log("Difference In Time: " + later);
-
-  var tRemainder = now % freq;
+  // Time apart (remainder)
+  var tRemainder = diffTime % tFrequency;
   console.log(tRemainder);
 
-  var minsAway = freq - tRemainder;
-  console.log("MINUTES TILL TRAIN: " + minsAway);
+  // Minute Until Train
+  var tMinutesTillTrain = tFrequency - tRemainder;
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-  var nextArrival = moment().add(minsAway, "minutes");
-  console.log("ARRIVAL TIME: " + moment(nextArrival).format("hh:mm"));
+  // Next Train
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
   $("#minutes-display").text(minsAway);
   $("#time-display").text(nextArrival.format("hh:mm"));
 
