@@ -54,18 +54,18 @@ $(document).ready(function () {
     console.log(snapshot.val().frequency);
 
 
-   
 
-   
+
+
 
     $(".train-crap").append(
-`
+      `
   <tr>
     <td id="train-display">${snapshot.val().train}</td>
     <td id="destination-display">${snapshot.val().destination}</td>
     <td id="frequency-display">${snapshot.val().frequency}</td>
-    <td id="time-display">${firstTime}</td>
-    <td id="minutes-display">${tFrequency}</td>
+    <td id="time-display">${nextArrival}</td>
+    <td id="minutes-display">${minsAway}</td>
   </tr>
 `
     );
@@ -75,12 +75,14 @@ $(document).ready(function () {
     console.log("Errors handled: " + errorObject.code);
   });
 
-  var tFrequency = 3;
 
-    // Time is 3:30 AM
-    var firstTime = "03:30";
+  // you will need to calculate this
+  var nextArrival = "9:00am ";
 
-  var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+  // you will need to calculate this
+  var minsAway = 4;
+
+  var firstTimeConverted = moment(nextArrival, "HH:mm").subtract(1, "years");
   console.log(firstTimeConverted);
 
   // Current Time
@@ -92,18 +94,18 @@ $(document).ready(function () {
   console.log("DIFFERENCE IN TIME: " + diffTime);
 
   // Time apart (remainder)
-  var tRemainder = diffTime % tFrequency;
+  var tRemainder = diffTime % minsAway;
   console.log(tRemainder);
 
   // Minute Until Train
-  var tMinutesTillTrain = tFrequency - tRemainder;
+  var tMinutesTillTrain = minsAway - tRemainder;
   console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
   // Next Train
   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
   console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-  $("#minutes-display").text(tFrequency);
-  $("#time-display").text(firstTime).format("hh:mm");
+  $("#minutes-display").text(minsAway);
+  $("#time-display").text(nextArrival.format("hh:mm"));
 
 
 
