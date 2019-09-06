@@ -53,10 +53,11 @@ $(document).ready(function () {
     console.log(snapshot.val().time);
     console.log(snapshot.val().frequency);
 
+     // you will need to calculate this
+  var nextArrival = "9:00am ";
 
-
-
-
+  // you will need to calculate this
+  var minsAway = 4;
 
     $(".train-crap").append(
       `
@@ -70,44 +71,35 @@ $(document).ready(function () {
 `
     );
 
+    var firstTimeConverted = moment(nextArrival, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+  
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+  
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+  
+    // Time apart (remainder)
+    var tRemainder = diffTime % minsAway;
+    console.log(tRemainder);
+  
+    // Minute Until Train
+    var tMinutesTillTrain = minsAway - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+  
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    $("#minutes-display").text(minsAway);
+    $("#time-display").text(nextArrival.format("hh:mm"));
+
     // Handle the errors
   }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
   });
-
-
-  // you will need to calculate this
-  var nextArrival = "9:00am ";
-
-  // you will need to calculate this
-  var minsAway = 4;
-
-  var firstTimeConverted = moment(nextArrival, "HH:mm").subtract(1, "years");
-  console.log(firstTimeConverted);
-
-  // Current Time
-  var currentTime = moment();
-  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
-
-  // Difference between the times
-  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-  console.log("DIFFERENCE IN TIME: " + diffTime);
-
-  // Time apart (remainder)
-  var tRemainder = diffTime % minsAway;
-  console.log(tRemainder);
-
-  // Minute Until Train
-  var tMinutesTillTrain = minsAway - tRemainder;
-  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-  // Next Train
-  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-  $("#minutes-display").text(minsAway);
-  $("#time-display").text(nextArrival.format("hh:mm"));
-
-
 
 })
 
