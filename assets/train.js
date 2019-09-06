@@ -56,11 +56,7 @@ $(document).ready(function () {
 
    
 
-    // you will need to calculate this
-    var nextArrival = "5:00pm";
-    
-    // you will need to calculate this
-    var minsAway = 4;
+   
 
     $(".train-crap").append(
 `
@@ -68,8 +64,8 @@ $(document).ready(function () {
     <td id="train-display">${snapshot.val().train}</td>
     <td id="destination-display">${snapshot.val().destination}</td>
     <td id="frequency-display">${snapshot.val().frequency}</td>
-    <td id="time-display">${nextArrival}</td>
-    <td id="minutes-display">${minsAway}</td>
+    <td id="time-display">${firstTime}</td>
+    <td id="minutes-display">${tFrequency}</td>
   </tr>
 `
     );
@@ -106,8 +102,8 @@ $(document).ready(function () {
   // Next Train
   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
   console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-  $("#minutes-display").text(minsAway);
-  $("#time-display").text(nextArrival.format("hh:mm"));
+  $("#minutes-display").text(tFrequency);
+  $("#time-display").text(firstTime).format("hh:mm");
 
 
 
