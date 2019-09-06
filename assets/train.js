@@ -94,7 +94,7 @@ $(document).ready(function () {
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
     $("#minutes-display").text(minsAway);
-    $("#time-display").text(nextArrival.format("hh:mm"));
+    $("#time-display").text(nextArrival + format("hh:mm"))
 
     // Handle the errors
   }, function (errorObject) {
